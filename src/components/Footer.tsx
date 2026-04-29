@@ -1,3 +1,12 @@
+import Icon from "@/components/ui/icon";
+
+const socials = [
+  { name: "Instagram", icon: "Instagram", url: "https://instagram.com" },
+  { name: "YouTube", icon: "Youtube", url: "https://youtube.com" },
+  { name: "Telegram", icon: "Send", url: "https://t.me" },
+  { name: "VK", icon: "Users", url: "https://vk.com" },
+];
+
 export default function Footer() {
   return (
     <div
@@ -55,7 +64,23 @@ export default function Footer() {
               <h1 className="text-[14vw] sm:text-[13vw] lg:text-[11vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-black tracking-tight">
                 DRIVEROUTE
               </h1>
-              <p className="text-white/40 text-sm sm:text-base">{new Date().getFullYear()} DriveRoute Challenge</p>
+              <div className="flex flex-col items-start sm:items-end gap-3">
+                <div className="flex gap-3">
+                  {socials.map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.name}
+                      className="w-10 h-10 flex items-center justify-center border border-white/20 text-white/50 hover:text-white hover:border-[#ff6b1a] transition-all duration-300"
+                    >
+                      <Icon name={s.icon as never} size={18} />
+                    </a>
+                  ))}
+                </div>
+                <p className="text-white/40 text-sm sm:text-base">{new Date().getFullYear()} DriveRoute Challenge</p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Icon from "@/components/ui/icon";
+
+const videos = [
+  {
+    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    title: "Тбилиси: финальный день",
+    author: "Артём",
+    duration: "8:42",
+  },
+  {
+    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    title: "Алматы с высоты птичьего полёта",
+    author: "Катя",
+    duration: "5:17",
+  },
+];
 
 const photos = [
   {
@@ -49,6 +65,7 @@ const photos = [
 export default function Gallery() {
   const [active, setActive] = useState<number | null>(null);
   const [filter, setFilter] = useState<"all" | "artem" | "kate">("all");
+  const [tab, setTab] = useState<"photo" | "video">("photo");
 
   const filtered = photos.filter((p) => {
     if (filter === "all") return true;
@@ -62,59 +79,111 @@ export default function Gallery() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
             <p className="text-[#ff6b1a] uppercase tracking-[0.3em] text-xs font-semibold mb-2">
-              Фотоотчёт
+              Галерея
             </p>
             <h2 className="text-[#0a1628] text-4xl sm:text-5xl font-black leading-tight">
               847 кадров.<br />Лучшие — здесь.
             </h2>
           </div>
-          <div className="flex gap-2">
-            {(["all", "artem", "kate"] as const).map((f) => (
+          <div className="flex flex-col gap-3 items-end">
+            <div className="flex gap-2">
               <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`px-4 py-2 uppercase text-xs tracking-widest font-bold border transition-all duration-200 ${
-                  filter === f
+                onClick={() => setTab("photo")}
+                className={`px-4 py-2 uppercase text-xs tracking-widest font-bold border transition-all duration-200 flex items-center gap-2 ${
+                  tab === "photo"
                     ? "bg-[#0a1628] text-white border-[#0a1628]"
                     : "bg-transparent text-[#0a1628] border-[#0a1628]/30 hover:border-[#0a1628]"
                 }`}
               >
-                {f === "all" ? "Все" : f === "artem" ? "Артём" : "Катя"}
+                <Icon name="Image" size={13} /> Фото
               </button>
-            ))}
+              <button
+                onClick={() => setTab("video")}
+                className={`px-4 py-2 uppercase text-xs tracking-widest font-bold border transition-all duration-200 flex items-center gap-2 ${
+                  tab === "video"
+                    ? "bg-[#0a1628] text-white border-[#0a1628]"
+                    : "bg-transparent text-[#0a1628] border-[#0a1628]/30 hover:border-[#0a1628]"
+                }`}
+              >
+                <Icon name="Play" size={13} /> Видео
+              </button>
+            </div>
+            {tab === "photo" && (
+              <div className="flex gap-2">
+                {(["all", "artem", "kate"] as const).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={`px-4 py-2 uppercase text-xs tracking-widest font-bold border transition-all duration-200 ${
+                      filter === f
+                        ? "bg-[#ff6b1a] text-white border-[#ff6b1a]"
+                        : "bg-transparent text-[#0a1628] border-[#0a1628]/30 hover:border-[#0a1628]"
+                    }`}
+                  >
+                    {f === "all" ? "Все" : f === "artem" ? "Артём" : "Катя"}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {filtered.map((photo, idx) => (
-            <motion.div
-              key={idx}
-              layout
-              onClick={() => setActive(photos.indexOf(photo))}
-              className="relative overflow-hidden cursor-pointer group aspect-square"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src={photo.src}
-                alt={photo.caption}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-[#0a1628]/0 group-hover:bg-[#0a1628]/60 transition-all duration-300 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100">
-                <p className="text-white text-xs font-bold uppercase tracking-widest text-[#ff6b1a]">
-                  {photo.author} · {photo.km} км
-                </p>
-                <p className="text-white text-sm mt-1 leading-snug">{photo.caption}</p>
+        {tab === "video" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            {videos.map((v, idx) => (
+              <div key={idx} className="overflow-hidden">
+                <div className="relative aspect-video bg-[#0a1628]">
+                  <iframe
+                    src={v.src}
+                    title={v.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="p-4 border border-t-0 border-[#0a1628]/10">
+                  <p className="text-[#ff6b1a] text-xs uppercase tracking-widest font-bold mb-1">
+                    {v.author} · {v.duration}
+                  </p>
+                  <p className="text-[#0a1628] font-bold">{v.title}</p>
+                </div>
               </div>
-              <div className="absolute top-3 left-3 bg-[#0a1628]/70 px-2 py-1">
-                <p className="text-[10px] uppercase tracking-widest text-[#ff6b1a] font-bold">
-                  {photo.author}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
+        {tab === "photo" && (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {filtered.map((photo, idx) => (
+              <motion.div
+                key={idx}
+                layout
+                onClick={() => setActive(photos.indexOf(photo))}
+                className="relative overflow-hidden cursor-pointer group aspect-square"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-[#0a1628]/0 group-hover:bg-[#0a1628]/60 transition-all duration-300 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest text-[#ff6b1a]">
+                    {photo.author} · {photo.km} км
+                  </p>
+                  <p className="text-white text-sm mt-1 leading-snug">{photo.caption}</p>
+                </div>
+                <div className="absolute top-3 left-3 bg-[#0a1628]/70 px-2 py-1">
+                  <p className="text-[10px] uppercase tracking-widest text-[#ff6b1a] font-bold">
+                    {photo.author}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
 
       <AnimatePresence>

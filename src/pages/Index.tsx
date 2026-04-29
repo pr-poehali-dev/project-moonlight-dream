@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Participants from "@/components/Participants";
 import Featured from "@/components/Featured";
+import Reports from "@/components/Reports";
 import Promo from "@/components/Promo";
 import Gallery from "@/components/Gallery";
 import Register from "@/components/Register";
@@ -11,9 +13,11 @@ const Index = () => {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <Participants />
       <Featured />
-      <Promo />
+      <Reports />
       <Gallery />
+      <Promo />
       <Register />
       <Footer />
     </main>
