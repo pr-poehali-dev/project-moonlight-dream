@@ -38,6 +38,11 @@ export default function Promo() {
       </div>
 
       <div className="relative z-10 w-full max-w-2xl mx-auto px-6 text-center">
+        <img
+          src="https://cdn.poehali.dev/projects/81e7de98-a561-4796-8802-e5bddaa91a28/bucket/3441ed0d-bb69-4332-a73a-087595b4fc51.png"
+          alt="Едем дальше"
+          className="w-72 sm:w-96 mx-auto mb-8"
+        />
         <p className="text-[#ff6b1a] uppercase tracking-[0.3em] text-xs font-semibold mb-4">
           Голосование
         </p>
