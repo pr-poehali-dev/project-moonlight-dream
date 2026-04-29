@@ -1,10 +1,12 @@
 import Icon from "@/components/ui/icon";
+import Logo from "@/components/Logo";
 
 const socials = [
   { name: "Instagram", icon: "Instagram", url: "https://instagram.com" },
   { name: "YouTube", icon: "Youtube", url: "https://youtube.com" },
   { name: "Telegram", icon: "Send", url: "https://t.me" },
   { name: "VK", icon: "Users", url: "https://vk.com" },
+  { name: "TikTok", icon: "Music2", url: "https://tiktok.com" },
 ];
 
 export default function Footer() {
@@ -61,9 +63,9 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
-              <h1 className="text-[14vw] sm:text-[13vw] lg:text-[11vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-black tracking-tight">
-                DRIVEROUTE
-              </h1>
+              <div className="mt-4 sm:mt-6 lg:mt-10">
+                <Logo variant="light" size="lg" />
+              </div>
               <div className="flex flex-col items-start sm:items-end gap-3">
                 <div className="flex gap-3">
                   {socials.map((s) => (

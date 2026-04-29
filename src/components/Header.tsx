@@ -1,3 +1,5 @@
+import Logo from "@/components/Logo";
+
 interface HeaderProps {
   className?: string;
 }
@@ -6,9 +8,9 @@ export default function Header({ className }: HeaderProps) {
   return (
     <header className={`absolute top-0 left-0 right-0 z-10 p-6 ${className ?? ""}`}>
       <div className="flex justify-between items-center">
-        <div className="text-white text-sm uppercase tracking-widest font-black">
-          Drive<span className="text-[#ff6b1a]">Route</span>
-        </div>
+        <a href="/" aria-label="DriveRoute — главная">
+          <Logo variant="light" size="sm" />
+        </a>
         <nav className="flex gap-6 sm:gap-8">
           <a
             href="#challenges"
