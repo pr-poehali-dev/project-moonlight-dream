@@ -6,56 +6,56 @@ export default function Footer() {
     >
       <div className="relative h-[calc(100vh+400px)] sm:h-[calc(100vh+600px)] lg:h-[calc(100vh+800px)] -top-[100vh]">
         <div className="h-[400px] sm:h-[600px] lg:h-[800px] sticky top-[calc(100vh-400px)] sm:top-[calc(100vh-600px)] lg:top-[calc(100vh-800px)]">
-          <div className="bg-neutral-900 py-4 sm:py-6 lg:py-8 px-4 sm:px-6 h-full w-full flex flex-col justify-between">
+          <div className="bg-[#0a1628] py-4 sm:py-6 lg:py-8 px-4 sm:px-6 h-full w-full flex flex-col justify-between">
             <div className="flex shrink-0 gap-8 sm:gap-12 lg:gap-20">
               <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Сервис</h3>
+                <h3 className="mb-1 sm:mb-2 uppercase text-[#ff6b1a] text-xs sm:text-sm tracking-widest font-semibold">Маршруты</h3>
                 <a
-                  href="#features"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#season"
+                  className="text-white hover:text-[#ff6b1a] transition-colors duration-300 text-sm sm:text-base"
                 >
-                  Возможности
+                  Сезон 3
                 </a>
                 <a
-                  href="#about"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#archive"
+                  className="text-white hover:text-[#ff6b1a] transition-colors duration-300 text-sm sm:text-base"
                 >
-                  О нас
+                  Архив
                 </a>
                 <a
-                  href="#contact"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#map"
+                  className="text-white hover:text-[#ff6b1a] transition-colors duration-300 text-sm sm:text-base"
                 >
-                  Контакты
+                  Карта
                 </a>
               </div>
               <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Приложение</h3>
+                <h3 className="mb-1 sm:mb-2 uppercase text-[#ff6b1a] text-xs sm:text-sm tracking-widest font-semibold">Участники</h3>
                 <a
-                  href="#download"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#artem"
+                  className="text-white hover:text-[#ff6b1a] transition-colors duration-300 text-sm sm:text-base"
                 >
-                  Скачать
+                  Артём
                 </a>
                 <a
-                  href="#ios"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#kate"
+                  className="text-white hover:text-[#ff6b1a] transition-colors duration-300 text-sm sm:text-base"
                 >
-                  App Store
+                  Катя
                 </a>
                 <a
-                  href="#android"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
+                  href="#join"
+                  className="text-[#ff6b1a] hover:text-white transition-colors duration-300 text-sm sm:text-base font-bold"
                 >
-                  Google Play
+                  Стать участником →
                 </a>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
-              <h1 className="text-[18vw] sm:text-[16vw] lg:text-[14vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-bold tracking-tight">
+              <h1 className="text-[14vw] sm:text-[13vw] lg:text-[11vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-black tracking-tight">
                 DRIVEROUTE
               </h1>
-              <p className="text-white text-sm sm:text-base">{new Date().getFullYear()} DriveRoute</p>
+              <p className="text-white/40 text-sm sm:text-base">{new Date().getFullYear()} DriveRoute Challenge</p>
             </div>
           </div>
         </div>
